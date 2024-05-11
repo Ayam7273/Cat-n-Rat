@@ -8,116 +8,59 @@ HTMLButton.onclick = function () {
 };
 
 // Slider
-const slides = document.querySelector('.slides');
-const images = document.querySelectorAll('.slides img');
-
-let index = 0;
-
-function slide() {
-  index++;
-
-  if (index === images.length) {
-    index = 0;
-  }
-
-  slides.style.transform = `translateX(-${index * 100}%)`;
-}
-
-function prevSlide() {
-  index--;
-
-  if (index < 0) {
-    index = images.length - 1;
-  }
-
-  slides.style.transform = `translateX(-${index * 100}%)`;
-}
-
-function nextSlide() {
-  slide();
-}
-
-setInterval(slide, 3000); // Change slide every 3 seconds
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const carousel = document.querySelector(".carousel"),
-firstImg = carousel.querySelectorAll("img")[0],
-arrowIcons = document.querySelectorAll(".wrapper i");
+    firstImg = carousel.querySelectorAll("img")[0],
+    arrowIcons = document.querySelectorAll(".wrapper i");
 
-let isDragStart = false, isDragging = false, prevPageX, prevScrollLeft, positionDiff;
+let isDragStart = false,
+    isDragging = false,
+    prevPageX,
+    prevScrollLeft,
+    positionDiff;
 
 const showHideIcons = () => {
-    // showing and hiding prev/next icon according to carousel scroll left value
-    let scrollWidth = carousel.scrollWidth - carousel.clientWidth; // getting max scrollable width
+    let scrollWidth = carousel.scrollWidth - carousel.clientWidth;
     arrowIcons[0].style.display = carousel.scrollLeft == 0 ? "none" : "block";
     arrowIcons[1].style.display = carousel.scrollLeft == scrollWidth ? "none" : "block";
-}
+};
 
 arrowIcons.forEach(icon => {
     icon.addEventListener("click", () => {
-        let firstImgWidth = firstImg.clientWidth + 14; // getting first img width & adding 14 margin value
-        // if clicked icon is left, reduce width value from the carousel scroll left else add to it
+        let firstImgWidth = firstImg.clientWidth + 14;
         carousel.scrollLeft += icon.id == "left" ? -firstImgWidth : firstImgWidth;
-        setTimeout(() => showHideIcons(), 60); // calling showHideIcons after 60ms
+        setTimeout(() => showHideIcons(), 60);
     });
 });
 
 const autoSlide = () => {
-    // if there is no image left to scroll then return from here
-    if(carousel.scrollLeft - (carousel.scrollWidth - carousel.clientWidth) > -1 || carousel.scrollLeft <= 0) return;
-
-    positionDiff = Math.abs(positionDiff); // making positionDiff value to positive
     let firstImgWidth = firstImg.clientWidth + 14;
-    // getting difference value that needs to add or reduce from carousel left to take middle img center
-    let valDifference = firstImgWidth - positionDiff;
-
-    if(carousel.scrollLeft > prevScrollLeft) { // if user is scrolling to the right
-        return carousel.scrollLeft += positionDiff > firstImgWidth / 3 ? valDifference : -positionDiff;
-    }
-    // if user is scrolling to the left
-    carousel.scrollLeft -= positionDiff > firstImgWidth / 3 ? valDifference : -positionDiff;
-}
+    carousel.scrollLeft += firstImgWidth; // Scroll to the next image
+    setTimeout(autoSlide, 3000); // Call autoSlide function again after 3 seconds
+};
 
 const dragStart = (e) => {
-    // updatating global variables value on mouse down event
     isDragStart = true;
     prevPageX = e.pageX || e.touches[0].pageX;
     prevScrollLeft = carousel.scrollLeft;
-}
+};
 
 const dragging = (e) => {
-    // scrolling images/carousel to left according to mouse pointer
-    if(!isDragStart) return;
+    if (!isDragStart) return;
     e.preventDefault();
     isDragging = true;
     carousel.classList.add("dragging");
     positionDiff = (e.pageX || e.touches[0].pageX) - prevPageX;
     carousel.scrollLeft = prevScrollLeft - positionDiff;
     showHideIcons();
-}
+};
 
 const dragStop = () => {
     isDragStart = false;
     carousel.classList.remove("dragging");
-
-    if(!isDragging) return;
+    if (!isDragging) return;
     isDragging = false;
-    autoSlide();
-}
+    autoSlide(); // Call autoSlide function when dragging stops
+};
 
 carousel.addEventListener("mousedown", dragStart);
 carousel.addEventListener("touchstart", dragStart);
@@ -127,3 +70,6 @@ carousel.addEventListener("touchmove", dragging);
 
 document.addEventListener("mouseup", dragStop);
 carousel.addEventListener("touchend", dragStop);
+
+// Start auto sliding when the page loads
+autoSlide();
