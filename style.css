@@ -1,0 +1,587 @@
+*{
+    background-color: #ffd5af;
+    margin: 0;
+    padding: 0;
+     
+}
+
+body{
+    font-family: "Poetsen One", sans-serif;
+    overflow-x: hidden;
+}
+
+.header{
+    position: fixed;
+    z-index: 999;
+}
+
+/* Scrolling Ticker   */
+.ticker {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    font-family: "Roboto", sans-serif;
+    background-color: #ffd5af;
+
+}
+
+.ticker ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    animation: scroll 25s infinite linear;
+}
+
+.ticker ul li {
+    white-space: nowrap;
+    padding: 15px 24px;
+    color: #494949;
+    position: relative;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.ticker ul li:last-child::after {
+    display: none;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(-1083px);
+
+    }
+}
+
+
+/* nav bar */
+.nav {
+    position: fixed;
+    top: 50px;
+    width: 100%;
+    padding: 10px 0px;
+    background: #ffd5af;
+    box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.3);
+    font-weight: 400;
+    font-style: normal; 
+    text-align: center; 
+    padding: 20px 0;    
+}
+
+.nav,.nav-links,.navtext {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+.nav {
+    justify-content: space-evenly;
+}
+a {
+    color: #494949;
+    text-decoration: none;
+    margin-right: 100px;
+    font-size: 25px;
+}
+
+.nav .nav-links {
+    column-gap: 50px;
+    list-style: none;
+}
+
+.nav .nav-links a {
+    transition: all 0.2s linear;
+}
+
+.socials a {
+    margin: 0 20px;
+}
+ 
+/* Container */
+.container{
+    padding-left: 200px;
+    padding-right: 200px;
+    /* background-color: #fff; */
+}
+
+
+.catnrat{
+    padding-top: 170px;
+    width: 100vw;
+    height: 100%;
+}
+
+/* About Section */
+.about{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about h2{
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 700;
+    font-style: normal; 
+    font-size: 4rem;
+    padding: 20px;
+    color: #494949;
+}
+
+.about img{
+    width: 205px;
+}
+
+.about-text{
+    color: #494949;
+    font-family: "Roboto", sans-serif;
+    margin-top: 50px;
+    text-align: center; 
+    text-transform: uppercase;
+    font-size: 2.5rem;
+  
+}
+
+.strike{
+    text-decoration: line-through;
+    text-decoration-color: red;
+}
+
+mark{
+    background-color: #FF6A00;
+    color: #fff;
+}
+
+.logo{
+    display: block;
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Contact Address */
+.text-boxes{
+    height: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0px;
+    margin-bottom: 60px;
+}
+
+.text-boxes .text-box{
+    height: 10px;
+    max-width: 660px;
+    width: 100%;
+    margin: 55px 0;
+}
+
+.text-boxes .text-box .topic{
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bolder;
+    color:#494949;
+    margin: 4px;
+
+}
+
+.text-boxes .text-box textarea{
+    width: 92%;
+    padding: 0 10px;
+    font-size: 25px;
+    font-weight: bold;
+    border: 3px solid #FF6A00;
+    border-radius: 8px;
+    outline: none;
+    background: #e7edfe;
+    white-space: pre-wrap;
+    overflow-y: hidden;
+   
+    
+}
+
+.text-box textarea::-webkit-scrollbar{
+    display: none;
+}
+
+.text-boxes .text-box button{
+    height: 45px;
+    width: 155px;
+    color: #fff;
+    background: #FF6A00;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: 400;
+    margin-top: 8px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    margin-bottom: 50px;
+}
+
+.text-boxes .text-box button:hover{
+    background: #fff;
+    color: #FF6A00;
+    border: 2px solid #FF6A00;
+}
+
+/* Community & Tokenomics */
+.community{
+    margin-top: 200px;
+}
+
+.community h2{
+    color: #494949;
+    font-size: 2.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: underline 3px #FF6A00;
+}
+
+.community h3{
+    color: #494949;
+    font-size: 2rem;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 20px 0;
+    text-decoration: underline 3px #FF6A00;
+}
+
+.community p{
+    color: #000;
+    font-size: 25px;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    
+}
+
+/* Video */
+.video{
+    margin-top: 50px;
+    display: block;
+}
+
+.video h2{
+    color: #494949;
+    font-size: 2.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: underline 3px #FF6A00;
+    margin: 0px 0 50px;
+}
+
+.video-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.video-container video{
+    border: 2px solid #FF6A00;
+    max-width: 100%;
+    
+}
+
+/* Slider */
+.slide-section{
+    margin-top: 50px;
+}
+
+.slide-section h4{
+    color: #494949;
+    font-size: 1.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: underline 3px #FF6A00;
+    margin: 100px 0 0;
+    font-family: "Roboto", sans-serif;
+
+}
+
+.slider{
+    display: flex;
+    padding: 0 35px;
+    min-height: 70vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper{
+    display: flex;
+    max-width: 1200px;
+    position: relative;
+}
+
+.wrapper i{
+    top: 50%;
+    height: 44px;
+    width: 44px;
+    color: #343F4F;
+    cursor: pointer;
+    font-size: 1.15rem;
+    position: absolute;
+    text-align: center;
+    line-height: 44px;
+    background: #fff;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.1s linear;
+}
+
+.wrapper i:active{
+    transform: translateY(-50%) scale(0.9);
+}
+.wrapper i:hover{
+    background: #f2f2f2;
+}
+
+.wrapper i:first-child{
+    left: -22px;
+    display: none;
+}
+
+.wrapper i:last-child{
+    right: -22px;
+}
+
+.wrapper .carousel{
+    font-size: 0px;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+}
+
+.carousel.dragging{
+    cursor: grab;
+    scroll-behavior: auto;
+}
+
+.carousel.dragging img{
+    pointer-events: none;
+}
+
+.carousel img{
+    height: 340px;
+    object-fit: cover;
+    user-select: none;
+    margin-left: 14px;
+    width: calc(100% / 3);
+}
+
+.carousel img:first-child{
+    margin-left: 0px;
+}
+
+@media screen and (max-width: 900px) {
+    .carousel img{
+      width: calc(100% / 2);
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .carousel img{
+      width: 100%;
+    }
+}
+ 
+  
+ 
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Media Query */
+/* For screens up to 1400px */
+@media screen and (max-width: 1400px) {
+    .nav .nav-links {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .navtext li{
+        margin-right: 50px;
+        margin-left: 50px;
+        
+    }
+
+    .navtext li a{
+        text-align: center;
+    }
+
+    .nav .nav-links li {
+      margin-bottom: 10px;
+    }
+  
+    .socials {
+      margin-top: 10px;
+    }
+  
+  
+  /* Adjust nav links for any screen size */
+  .nav .nav-links a {
+    margin-right: 20px;
+
+  }
+    .catnrat{
+        padding-top: 200px;
+    }
+
+    .about h2{
+        font-size: 2rem;
+    }
+
+    .about img{
+        width: 150px;
+    }
+
+    .about-text{
+        font-size: 1rem;
+    }
+
+    .logo img{
+        width: 70%;
+    }
+
+    /* Community & Tokenomics */
+    .community h2{
+        font-size: 1.7rem;
+    }
+
+    .community h3{
+        font-size: 1.5rem;
+    }
+
+    .community p{
+        font-size: 20px;
+    }
+
+    .video h2{
+        font-size: 1.7rem;
+    }
+
+    .slide-section h4{
+        font-size: 1.5rem;
+    }
+
+    text-boxes .text-box textarea {
+        width: 70%;
+        padding: 0 10px;
+        font-size: 5px;
+        border: 2px solid #FF6A00;
+        border-radius: 8px;
+        outline: none;
+        background: #e7edfe;
+        white-space: pre-wrap;
+        overflow-y: hidden;
+    }
+
+   
+}
+  
+
+/* For screens up to 600px */
+@media screen and (max-width: 600px) {
+
+    .about h2 {
+        font-size: 1.7rem;
+    }
+
+    .navtext li{
+        margin-right: 25px;
+        margin-left: 30px;
+        
+    }
+
+    .text-boxes .text-box .topic {
+        font-size: 15px;
+    }
+
+   
+
+    /* Community & Tokenomics */
+    .community h2{
+        font-size: 1.5rem;
+    }
+
+    .community h3{
+        font-size: 1.2rem;
+    }
+
+    .community p{
+        font-size: 18px;
+    }
+
+    .video h2{
+        font-size: 1.5rem;
+    }
+
+    .slide-section h4{
+        font-size: 1.2rem;
+    }
+
+    .text-boxes .text-box button {
+        height: 35px;
+        width: 125px;
+        font-size: 14px;
+    }
+
+   
+}
+
+@media screen and (max-width: 400px) {
+    .navtext li{
+        margin-right: 20px;
+        margin-left: 17px;
+        
+    } 
+    
+    .text-boxes .text-box .topic{
+        font-size: 15px;
+    }
+
+    .about h2{
+        font-size: 1.5rem;
+    }
+
+    .about img{
+        width: 100px;
+    }
+
+
+     
+}
+
+@media screen and (max-width: 800px) {
+   
+
+    .container{
+        padding: 0 60px;
+     
+    }
+
+
+}
