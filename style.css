@@ -61,7 +61,7 @@ body{
 /* nav bar */
 .nav {
     position: fixed;
-    top: 50px;
+    top: 45px;
     width: 100%;
     padding: 10px 0px;
     background: #ffd5af;
@@ -579,7 +579,7 @@ mark{
    
 
     .container{
-        padding: 0 60px;
+        padding: 0 10px;
      
     }
 
