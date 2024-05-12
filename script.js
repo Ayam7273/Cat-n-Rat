@@ -87,7 +87,7 @@ const autoSlide = () => {
     }
 
     showHideIcons();
-    setTimeout(autoSlide, 3000); // Call autoSlide function again after 3 seconds
+    setTimeout(autoSlide, 5000); // Call autoSlide function again after 3 seconds
 };
 
 // Start auto sliding when the page loads
