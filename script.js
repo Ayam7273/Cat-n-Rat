@@ -16,7 +16,8 @@ let isDragStart = false,
     isDragging = false,
     prevPageX,
     prevScrollLeft,
-    positionDiff;
+    positionDiff,
+    autoSlideDirection = 1; // 1 for forward, -1 for backward
 
 const showHideIcons = () => {
     let scrollWidth = carousel.scrollWidth - carousel.clientWidth;
@@ -31,12 +32,6 @@ arrowIcons.forEach(icon => {
         setTimeout(() => showHideIcons(), 60);
     });
 });
-
-const autoSlide = () => {
-    let firstImgWidth = firstImg.clientWidth + 14;
-    carousel.scrollLeft += firstImgWidth; // Scroll to the next image
-    setTimeout(autoSlide, 3000); // Call autoSlide function again after 3 seconds
-};
 
 const dragStart = (e) => {
     isDragStart = true;
@@ -70,6 +65,30 @@ carousel.addEventListener("touchmove", dragging);
 
 document.addEventListener("mouseup", dragStop);
 carousel.addEventListener("touchend", dragStop);
+
+const autoSlide = () => {
+    let firstImgWidth = firstImg.clientWidth + 14;
+    let scrollWidth = carousel.scrollWidth - carousel.clientWidth;
+
+    if (autoSlideDirection === 1 && carousel.scrollLeft >= scrollWidth) {
+        // If at the end, change direction to backward
+        autoSlideDirection = -1;
+    } else if (autoSlideDirection === -1 && carousel.scrollLeft <= 0) {
+        // If at the beginning, change direction to forward
+        autoSlideDirection = 1;
+    }
+
+    if (autoSlideDirection === 1) {
+        // If forward direction, continue scrolling to the right
+        carousel.scrollLeft += firstImgWidth; // Scroll to the next image
+    } else {
+        // If backward direction, smoothly scroll back to the previous image
+        carousel.scrollLeft -= firstImgWidth;
+    }
+
+    showHideIcons();
+    setTimeout(autoSlide, 3000); // Call autoSlide function again after 3 seconds
+};
 
 // Start auto sliding when the page loads
 autoSlide();
