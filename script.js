@@ -12,12 +12,7 @@ const carousel = document.querySelector(".carousel"),
     firstImg = carousel.querySelectorAll("img")[0],
     arrowIcons = document.querySelectorAll(".wrapper i");
 
-let isDragStart = false,
-    isDragging = false,
-    prevPageX,
-    prevScrollLeft,
-    positionDiff,
-    autoSlideDirection = 1; // 1 for forward, -1 for backward
+let autoSlideDirection = 1; // 1 for forward, -1 for backward
 
 const showHideIcons = () => {
     let scrollWidth = carousel.scrollWidth - carousel.clientWidth;
@@ -32,39 +27,6 @@ arrowIcons.forEach(icon => {
         setTimeout(() => showHideIcons(), 60);
     });
 });
-
-const dragStart = (e) => {
-    isDragStart = true;
-    prevPageX = e.pageX || e.touches[0].pageX;
-    prevScrollLeft = carousel.scrollLeft;
-};
-
-const dragging = (e) => {
-    if (!isDragStart) return;
-    e.preventDefault();
-    isDragging = true;
-    carousel.classList.add("dragging");
-    positionDiff = (e.pageX || e.touches[0].pageX) - prevPageX;
-    carousel.scrollLeft = prevScrollLeft - positionDiff;
-    showHideIcons();
-};
-
-const dragStop = () => {
-    isDragStart = false;
-    carousel.classList.remove("dragging");
-    if (!isDragging) return;
-    isDragging = false;
-    autoSlide(); // Call autoSlide function when dragging stops
-};
-
-carousel.addEventListener("mousedown", dragStart);
-carousel.addEventListener("touchstart", dragStart);
-
-document.addEventListener("mousemove", dragging);
-carousel.addEventListener("touchmove", dragging);
-
-document.addEventListener("mouseup", dragStop);
-carousel.addEventListener("touchend", dragStop);
 
 const autoSlide = () => {
     let firstImgWidth = firstImg.clientWidth + 14;
@@ -87,7 +49,7 @@ const autoSlide = () => {
     }
 
     showHideIcons();
-    setTimeout(autoSlide, 5000); // Call autoSlide function again after 3 seconds
+    setTimeout(autoSlide, 5000); // Call autoSlide function again after 5 seconds
 };
 
 // Start auto sliding when the page loads
